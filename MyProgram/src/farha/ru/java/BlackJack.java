@@ -3,7 +3,8 @@ import java.io.*;
 import java.util.Scanner;
 
 public class BlackJack {
-private static int playercard1, playercard2, dealercard1, dealercard2, playerstotal, dealerstotal;
+    
+	private static int playercard1, playercard2, dealercard1, dealercard2, playerstotal, dealerstotal;
 	
 	public static void playersHit()
 	{
@@ -24,4 +25,24 @@ private static int playercard1, playercard2, dealercard1, dealercard2, playersto
 		System.out.println();
 	}
 	
+	public static void dealersCard()
+	{
+		dealercard1 = (int) (Math.random() * 9 + 2);
+		dealercard2 = (int) (Math.random() * 9 + 2);
+		dealerstotal = dealercard1 + dealercard2;
+		System.out.println("The dealer has a " + dealercard1 + " showing and the other card hidden.");
+		System.out.println("His total is hidden, too.");
+		System.out.println();
+	}
+	
+	public static void dealerhit()
+	{
+		System.out.println("Dealer chooses to hit.");
+		int dealercard = (int) (Math.random() * 9 + 2);
+		System.out.println("He draws a " + dealercard + ".");
+		dealerstotal += dealercard;
+		System.out.println("His total is " + dealerstotal);
+		System.out.println();
+		
+	}
 }
