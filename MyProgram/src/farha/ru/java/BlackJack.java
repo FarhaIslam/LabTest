@@ -45,4 +45,67 @@ public class BlackJack {
 		System.out.println();
 		
 	}
+	
+	public static void main(String[] args)
+	{
+            playersCard();
+		
+		if(playerstotal > 21)
+			System.out.println("DEALER WINS!");
+		
+		else
+		{	
+			
+			dealersCard();
+			System.out.println("Would you like to hit or stay?(h/s)");
+			Scanner s = new Scanner(System.in);
+			String str = s.next();
+			
+			while(str.charAt(0) != 's')
+			{
+					
+				if(str.charAt(0) == 'h')
+					playersHit();
+					
+				if(playerstotal > 21)
+					{
+						System.out.println("DEALER WINS!");
+						break;
+					}
+					
+				else if(str.charAt(0) != 'h' && str.charAt(0) != 's')
+					{	
+						System.out.println("Wrong format, please type 'h' or 's':");
+					}
+					
+				System.out.println("Would you like to hit or stay?(h/s)");
+				str = s.next();
+			}
+			if(playerstotal <= 21)
+			{
+				System.out.println("Okay, dealer's turn.");
+				while(dealerstotal < 16)
+				{
+					dealerhit();
+					if(dealerstotal > 21)
+						System.out.println("YOU WIN!");
+				}
+				if(dealerstotal <= 21)
+				{
+					System.out.println("Dealer stays.");
+					System.out.println();
+					System.out.println("Dealer's total is " + dealerstotal);
+					System.out.println("Your total is " + playerstotal);
+					if(dealerstotal >= playerstotal)
+					{
+						System.out.println("DEALER WINS!");
+					}
+					else
+						System.out.println("YOU WIN!");
+				}
+			}
+		}
+	}
+
+
 }
